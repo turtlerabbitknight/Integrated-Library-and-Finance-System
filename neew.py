@@ -82,7 +82,7 @@ if df is not None:
     c = total_tx * 25.0
     P, L, L_inact = 27500.0, 15675.0, 800.0
     
-    tab = st.radio( ["Overview", "Revenue", "Staffing", "Assets"], horizontal=True)
+    tab = st.radio("", ["Overview", "Revenue", "Staffing", "Assets"], horizontal=True, label_visibility="collapsed")
     mos = ["Jan", "Feb", "Mar", "Apr", "May"]
 
     if tab == "Overview":
