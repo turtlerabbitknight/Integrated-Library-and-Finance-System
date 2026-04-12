@@ -24,7 +24,7 @@ df = get_data()
 
 
 def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 4))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
     y = np.array(values, dtype=float)
     
     # Calculations
@@ -82,7 +82,7 @@ if df is not None:
     c = total_tx * 25.0
     P, L, L_inact = 27500.0, 15675.0, 800.0
     
-    tab = st.radio("Strategic Navigation", ["Overview", "Revenue", "Staffing", "Assets"], horizontal=True)
+    tab = st.radio(, ["Overview", "Revenue", "Staffing", "Assets"], horizontal=True)
     mos = ["Jan", "Feb", "Mar", "Apr", "May"]
 
     if tab == "Overview":
