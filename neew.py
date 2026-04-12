@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import numpy as np
 
-# --- 1. CONFIGURATION & DATA (Removed 2026 Reference) ---
-st.set_page_config(page_title="Strategic Library Forecast", layout="wide")
+st.set_page_config(page_title="Integrated Library and Finance System", layout="wide")
 
 @st.cache_data
 def get_data():
@@ -23,18 +22,18 @@ def get_data():
 
 df = get_data()
 
-# --- 2. THE VISUALIZATION ENGINE ---
+
 def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 4))
     y = np.array(values, dtype=float)
     
-    # --- CURRENT STATE ---
+    # Calculations
     ax1.bar(labels, y, color=color, alpha=0.8)
     ax1.set_title(f"CURRENT: {title}", fontweight='bold')
     ax1.set_ylabel(ylabel)
     ax1.set_ylim(0, max(y) * 1.15)
 
-    # --- FUTURE STATE (PROJECTION) ---
+    # Prediction
     if p_type == "maintenance":
         future_y = y * 1.85
         staff_limit = (df[df['role'] == 'STAFF'].shape[0] if df is not None else 10) * 12
@@ -60,7 +59,7 @@ def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
         ax2.set_title(f"FUTURE: Weekend Traffic Prediction", fontweight='bold')
         ax2.set_ylim(0, max(y) * 1.15)
 
-    else: # Standard Scaling
+    else: 
         m, b = np.polyfit(np.arange(len(y)), y, 1)
         fut_labels = list(labels) + ["Next"]
         fut_y = m * np.arange(len(fut_labels)) + b
@@ -74,7 +73,6 @@ def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
     st.pyplot(fig)
     st.divider()
 
-# --- 3. DASHBOARD LOGIC ---
 if df is not None:
     total_tx = len(df)
     ov_count = df['overdue_status'].sum() if 'overdue_status' in df.columns else 627
