@@ -1,1 +1,1 @@
-# Integrated-Library-and-Finance-System
+# Integrated Library and Finance System
