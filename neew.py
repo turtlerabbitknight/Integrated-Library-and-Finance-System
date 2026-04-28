@@ -12,8 +12,7 @@ st.set_page_config(page_title="Integrated Library and Finance System", layout="w
 def get_data():
     try:
         path = kagglehub.dataset_download("ziya07/library-transaction-dataset")
-        file = (os.path.join(path, "*.csv"))[0]
-        #file = glob.glob(os.path.join(path, "*.csv"))[0]
+        file = glob.glob(os.path.join(path, "*.csv"))[0]
         df = pd.read_csv(file)
         df.columns = df.columns.str.lower()
         df['role'] = df['user_role'].str.upper().fillna('STUDENT')
