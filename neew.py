@@ -24,7 +24,7 @@ df = get_data()
 
 
 def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 10))
     y = np.array(values, dtype=float)
     
     # Calculations
@@ -54,7 +54,6 @@ def draw_pair(labels, values, title, ylabel, color, p_type="standard"):
 
     elif p_type == "traffic":
         future_y = np.roll(y, 2) * 0.8
-        future_y[:2] = 12 
         ax2.plot(labels, future_y, "m-x", linewidth=2, markersize=8, label="Weekend Prediction")
         ax2.set_title(f"FUTURE: Weekend Traffic Prediction", fontweight='bold')
         ax2.set_ylim(0, max(y) * 1.15)
